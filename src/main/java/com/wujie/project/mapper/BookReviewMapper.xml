@@ -17,15 +17,17 @@
 
     <select id="selectBookReviewByBid" resultMap="bru">
         select
-            br.bid,
+            br.brid,
             br.br_content,
             br.br_date,
+            br.custom_tag,
+            br.tag_status,
             u.uid,
             u.uname
         from
             book_review br,
             user u
         where bid = #{bid} and br.uid = u.uid and br.custom_tag is not null
-        order by br_date desc ;
+        order by br_date desc
     </select>
 </mapper>

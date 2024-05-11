@@ -25,4 +25,5 @@ public class ReviewServiceImpl implements ReviewService {
         List<BookReview> res = bookReviewMapper.selectBookReviewByBid(bid);
         return new PageInfo<>(res);
     }
+
 }

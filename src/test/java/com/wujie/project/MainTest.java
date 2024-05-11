@@ -32,7 +32,6 @@ public class MainTest {
 
     @Test
     public void test(){
-        List<Tag> tags = tagMapper.selectTagByBid("1");
 
     }
 }
