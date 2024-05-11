@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.wujie.project.mapper.PostMapper">
+    <resultMap id="pu" type="com.wujie.project.pojo.Post">
+        <id property="pid" column="pid"/>
+        <result property="postContent" column="post_content"/>
+        <result property="postDate" column="post_date"/>
+        <result property="topStatus" column="top_status"/>
+        <result property="pdeleteStatus" column="pdelete_status"/>
+        <association property="user" javaType="com.wujie.project.pojo.User">
+            <id property="uid" column="uid"/>
+            <result property="uname" column="uname"/>
+        </association>
+    </resultMap>
+
+    <select id="selectAllPost" resultMap="pu">
+        select pid,post_content,post_date,top_status,u.uid,uname from post p,user u where bid = #{bid};
+    </select>
+</mapper>

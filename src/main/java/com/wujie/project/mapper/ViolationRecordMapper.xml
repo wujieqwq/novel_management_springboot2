@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.wujie.project.mapper.ViolationRecordMapper">
+    <resultMap id="vr" type="com.wujie.project.pojo.ViolationRecord">
+        <id property="vrid" column="vrid"/>
+        <result property="reason" column="reason"/>
+        <result property="violationResult" column="violation_result"/>
+        <result property="vrDate" column="vr_date"/>
+        <association property="user" javaType="com.wujie.project.pojo.User">
+            <id property="uid" column="uid"/>
+            <result property="uname" column="uname"/>
+        </association>
+        <association property="vuser" javaType="com.wujie.project.pojo.User">
+            <id property="uid" column="vuid"/>
+            <result property="uname" column="uname"/>
+        </association>
+    </resultMap>
+
+    <select id="selectAllVRecord" resultMap="vr">
+        SELECT
+            v.vrid,
+            v.reason,
+            v.violation_result,
+            v.vr_date,
+            u1.uid AS uid,
+            u1.uname AS uname,
+            u2.uid AS vuid,
+            u2.uname AS vuname
+        FROM
+            violation_record v
+                JOIN user u1 ON v.uid = u1.uid
+                JOIN user u2 ON v.vuid = u2.uid
+        ORDER BY vr_date desc
+    </select>
+</mapper>

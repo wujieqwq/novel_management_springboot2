@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.wujie.project.mapper.BookReviewMapper">
+    <resultMap id="bru" type="com.wujie.project.pojo.BookReview">
+        <id property="brid" column="brid"/>
+        <result property="brContent" column="br_content"/>
+        <result property="brDate" column="br_date"/>
+        <result property="customTag" column="custom_tag"/>
+        <result property="tagStatus" column="tag_status"/>
+        <association property="user" javaType="com.wujie.project.pojo.User">
+            <id property="uid" column="uid"/>
+            <result property="uname" column="uname"/>
+        </association>
+    </resultMap>
+
+    <select id="selectBookReviewByBid" resultMap="bru">
+        select
+            br.bid,
+            br.br_content,
+            br.br_date,
+            u.uid,
+            u.uname
+        from
+            book_review br,
+            user u
+        where bid = #{bid} and br.uid = u.uid and br.custom_tag is not null
+        order by br_date desc ;
+    </select>
+</mapper>

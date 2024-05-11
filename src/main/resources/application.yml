@@ -1,0 +1,32 @@
+spring:
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://127.0.0.1:3306/novel_management?serverTimezone=GMT
+    username: root
+    password: 123456
+  mvc:
+    static-path-pattern: /img/**
+  servlet:
+    multipart:
+      max-file-size: 10MB
+      max-request-size: 10MB
+
+logging:
+  level:
+    com.wujie.project: debug
+    web: debug
+
+mybatis-plus:
+  configuration:
+    map-underscore-to-camel-case: true
+
+pagehelper:
+  helper-dialect: mysql
+  reasonable: true
+  support-methods-arguments: true
+  params: count=countSql
+server:
+  port: 8082
+  reactive:
+    session:
+      timeout: 1h

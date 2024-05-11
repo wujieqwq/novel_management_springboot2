@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.wujie.project.mapper.FeedBackMapper">
+    <resultMap id="fb" type="com.wujie.project.pojo.FeedBack">
+        <id property="fid" column="fid"/>
+        <result property="feedbackContent" column="feedback_content"/>
+        <result property="feedbackDate" column="feedback_date"/>
+        <association property="user" javaType="com.wujie.project.pojo.User">
+            <id property="uid" column="uid"/>
+            <result property="uname" column="uname"/>
+        </association>
+    </resultMap>
+
+    <select id="selectAllfb" resultMap="fb">
+        select fid,feedback_content,feedback_date,f.uid,uname from feedback f,user u where f.uid = u.uid
+    </select>
+</mapper>

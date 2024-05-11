@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.wujie.project.mapper.OperatorMapper">
+    <resultMap id="oa" type="com.wujie.project.pojo.OperatorAuthority">
+        <id property="oaid" column="oaid"/>
+        <result property="authorityType" column="authority_type"/>
+        <result property="authorityAudit" column="authority_audit"/>
+        <association property="user" javaType="com.wujie.project.pojo.User">
+            <id property="uid" column="uid"/>
+            <result property="uname" column="uname"/>
+            <result property="userType" column="user_type"/>
+        </association>
+        <association property="book" javaType="com.wujie.project.pojo.Book">
+            <id property="bid" column="bid"/>
+            <result property="bname" column="bname"/>
+        </association>
+    </resultMap>
+
+    <select id="selectOp" resultMap="oa">
+        select b.bid,b.bname,u.uid,u.uname,oa.authority_type,oa.oaid,oa.authority_audit
+        from operator_authority oa
+        join user u on u.uid = oa.uid
+        join book b on b.bid = oa.bid
+        <where>
+            <if test="bid != null">
+                and b.bid = #{bid}
+            </if>
+        </where>
+        and oa.authority_audit = 1
+        order by b.bid desc
+    </select>
+
+    <select id="selectOpApply" resultMap="oa">
+        select b.bid,b.bname,u.uid,u.uname,oa.authority_type,oa.oaid,oa.authority_audit
+        from operator_authority oa
+        join user u on u.uid = oa.uid
+        join book b on b.bid = oa.bid
+        <where>
+            <if test="bid != null">
+                and b.bid = #{bid}
+            </if>
+        </where>
+        and oa.authority_audit = 0
+        order by b.bid desc
+    </select>
+
+    <resultMap id="or" type="com.wujie.project.pojo.OperationRecord">
+        <id property="orid" column="orid"/>
+        <result property="orDate" column="or_date"/>
+        <result property="orContent" column="or_content"/>
+        <association property="user" javaType="com.wujie.project.pojo.User">
+            <id property="uid" column="uid"/>
+            <result property="uname" column="uname"/>
+        </association>
+        <association property="post" column="pid" javaType="com.wujie.project.pojo.Post" select="com.wujie.project.mapper.PostMapper.selectById"/>
+    </resultMap>
+    <select id="selectRecord" resultMap="or">
+        SELECT
+            o.orid,
+            o.or_date,
+            o.or_content,
+            u.uid,
+            u.uname,
+            p.pid
+        FROM
+            operation_record o
+                JOIN user u ON o.uid = u.uid
+                LEFT JOIN post p ON o.pid = p.pid
+        order by or_date desc
+    </select>
+
+</mapper>

@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.wujie.project.mapper.AdaptationMapper">
+    <resultMap id="ad" type="com.wujie.project.pojo.Adaptation">
+        <id property="aid" column="aid"/>
+        <result property="adaptationType" column="adaptation_type"/>
+        <result property="studio" column="studio"/>
+        <result property="scope" column="scope"/>
+        <result property="licenseMoney" column="license_money"/>
+        <result property="adaptationStatus" column="adaptation_status"/>
+        <result property="adaptationDate" column="adaptation_date"/>
+        <result property="adaptationDuration" column="adaptation_duration"/>
+        <result property="remark" column="remark"/>
+        <association property="book" column="bid" select="com.wujie.project.mapper.BookMapper.selectById"/>
+    </resultMap>
+    <select id="selectAdByBid" resultMap="ad">
+        select
+            *
+        from adaptation
+        <where>
+            <if test="bid!=null">
+                and bid = #{bid}
+            </if>
+        </where>
+        order by adaptation_date desc
+    </select>
+</mapper>
