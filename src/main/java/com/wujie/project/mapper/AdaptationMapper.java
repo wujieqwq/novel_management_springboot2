@@ -9,5 +9,7 @@ import java.util.List;
 @Mapper
 public interface AdaptationMapper extends BaseMapper<Adaptation> {
 
-    List<Adaptation> selectAdByBid(String bid);
+
+    List<Adaptation> selectAdaptationByBid(String bid, String status);
+
 }

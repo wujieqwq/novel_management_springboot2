@@ -15,13 +15,17 @@
         <result property="remark" column="remark"/>
         <association property="book" column="bid" select="com.wujie.project.mapper.BookMapper.selectById"/>
     </resultMap>
-    <select id="selectAdByBid" resultMap="ad">
+
+    <select id="selectAdaptationByBid" resultMap="ad">
         select
             *
-        from adaptation
+        from adaptation a
         <where>
             <if test="bid!=null">
                 and bid = #{bid}
+            </if>
+            <if test="status!=null">
+                and adaptation_status = #{status}
             </if>
         </where>
         order by adaptation_date desc

@@ -16,14 +16,14 @@ public class AdaptationServiceImpl implements AdaptationService {
     private AdaptationMapper adaptationMapper;
 
     @Override
-    public int insertAdApply(Adaptation adaptation) {
+    public Integer insertAdApply(Adaptation adaptation) {
         return adaptationMapper.insert(adaptation);
     }
 
     @Override
-    public PageInfo<Adaptation> selectAdByBid(Integer pageNum, Integer pageSize, String bid) {
+    public PageInfo<Adaptation> selectAdaptationByBid(Integer pageNum, Integer pageSize, String bid,String status) {
         PageHelper.startPage(pageNum,pageSize);
-        List<Adaptation> res = adaptationMapper.selectAdByBid(bid);
+        List<Adaptation> res = adaptationMapper.selectAdaptationByBid(bid,status);
         return new PageInfo<>(res);
     }
 }

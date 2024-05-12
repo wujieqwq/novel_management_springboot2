@@ -27,7 +27,31 @@
         from
             book_review br,
             user u
-        where bid = #{bid} and br.uid = u.uid and br.custom_tag is not null
+        <where>
+            and bid = #{bid}
+            and br.uid = u.uid
+            and br.custom_tag is not null
+            and br.tag_status = #{type}
+        </where>
+        order by br_date desc
+    </select>
+    <select id="selectAllBookReviewByBid" resultMap="bru">
+        select
+        br.brid,
+        br.br_content,
+        br.br_date,
+        br.custom_tag,
+        br.tag_status,
+        u.uid,
+        u.uname
+        from
+        book_review br,
+        user u
+        <where>
+            and bid = #{bid}
+            and br.uid = u.uid
+            and br.custom_tag is not null
+        </where>
         order by br_date desc
     </select>
 </mapper>

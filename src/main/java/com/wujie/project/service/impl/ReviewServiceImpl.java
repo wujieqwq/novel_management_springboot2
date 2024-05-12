@@ -9,6 +9,7 @@ import com.wujie.project.service.ReviewService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Service
@@ -20,10 +21,23 @@ public class ReviewServiceImpl implements ReviewService {
 
 
     @Override
-    public PageInfo<BookReview> selectBookReviewByBid(Integer pageNum, Integer pageSize, String bid) {
+    public PageInfo<BookReview> selectBookReviewByBid(Integer pageNum, Integer pageSize, String bid,String type) {
         PageHelper.startPage(pageNum,pageSize);
-        List<BookReview> res = bookReviewMapper.selectBookReviewByBid(bid);
+        List<BookReview> res = new ArrayList<>();
+        if ("-1".equals(type)){
+            res = bookReviewMapper.selectAllBookReviewByBid(bid);
+        }else{
+            res = bookReviewMapper.selectBookReviewByBid(bid,type);
+        }
         return new PageInfo<>(res);
+    }
+
+    @Override
+    public int updateCustomTag(String brid, String tagStatus) {
+        BookReview bookReview = new BookReview();
+        bookReview.setBrid(brid);
+        bookReview.setTagStatus(tagStatus);
+        return bookReviewMapper.updateById(bookReview);
     }
 
 }

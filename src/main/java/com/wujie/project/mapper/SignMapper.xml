@@ -19,6 +19,9 @@
             <if test="bid!=null">
                 and bid = #{bid}
             </if>
+            <if test="status!=null">
+                and sign_status = #{status}
+            </if>
         </where>
         order by sign_date desc
     </select>

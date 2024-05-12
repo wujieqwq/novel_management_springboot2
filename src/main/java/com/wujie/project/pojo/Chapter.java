@@ -15,8 +15,9 @@ public class Chapter {
     private String chapterContent;
     @JsonFormat(pattern = "yyyy-MM-dd")
     private Date chapterDate;
-    private Integer auditStatus;
+    private String auditStatus;
     private String auditRemarks;
+    private String bid;
     @TableField(exist = false)
     private Book book;
 }

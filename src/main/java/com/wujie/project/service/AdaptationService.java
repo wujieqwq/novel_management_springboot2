@@ -1,10 +1,13 @@
 package com.wujie.project.service;
 
+import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import com.github.pagehelper.PageInfo;
 import com.wujie.project.pojo.Adaptation;
 
-public interface AdaptationService {
-    int insertAdApply(Adaptation adaptation);
+public interface AdaptationService{
 
-    PageInfo<Adaptation> selectAdByBid(Integer pageNum, Integer pageSize, String bid);
+
+    PageInfo<Adaptation> selectAdaptationByBid(Integer PageNum,Integer PageSize,String bid,String status);
+
+    Integer insertAdApply(Adaptation adaptation);
 }

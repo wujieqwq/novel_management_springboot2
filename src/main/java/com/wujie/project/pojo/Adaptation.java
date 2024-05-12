@@ -11,10 +11,10 @@ import java.util.Date;
 public class Adaptation {
     @TableId
     private String aid;
-    private String type;
     private String studio;
     private String scope;
     private Integer licenseMoney;
+    private String adaptationType;
     private Integer adaptationStatus;
     @JsonFormat(pattern = "yyyy-MM-dd")
     private Date adaptationDate;

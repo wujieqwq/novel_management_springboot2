@@ -9,5 +9,5 @@ import java.util.List;
 @Mapper
 public interface SignMapper extends BaseMapper<Sign> {
 
-    List<Sign> selectSignByBid(String bid);
+    List<Sign> selectSignByBid(String bid,String status);
 }
