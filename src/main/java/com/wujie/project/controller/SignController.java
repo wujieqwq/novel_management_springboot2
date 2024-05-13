@@ -22,8 +22,8 @@ public class SignController {
         return new ResultInfo(200,"新建成功");
     }
     @RequestMapping("/selectSign")
-    public ResultInfo selectSignByBid(Integer pageNum,Integer pageSize,String bid,String status){
-        PageInfo<Sign> res = signService.selectSignByBid(pageNum,pageSize,bid,status);
+    public ResultInfo selectSign(Integer pageNum,Integer pageSize,Integer bid,Integer status){
+        PageInfo<Sign> res = signService.selectSign(pageNum,pageSize,bid,status);
         return new ResultInfo(200,"查询成功",res);
     }
 }

@@ -23,12 +23,12 @@ public class ViolationRecordController {
     }
     @RequestMapping("/insertVRecord")
     public ResultInfo insertVRecord(ViolationRecord vr, HttpSession session){
-        String uid = (String) session.getAttribute("uid");
+        Integer uid = (Integer) session.getAttribute("uid");
         violationRecordService.insertVRecord(vr,uid);
         return new ResultInfo(200,"添加成功");
     }
     @RequestMapping(value = "/{vrid}",method = RequestMethod.DELETE)
-    public ResultInfo deleteVRecord(@PathVariable String vrid){
+    public ResultInfo deleteVRecord(@PathVariable Integer vrid){
         violationRecordService.deleteRecord(vrid);
         return new ResultInfo(200,"删除成功");
     }

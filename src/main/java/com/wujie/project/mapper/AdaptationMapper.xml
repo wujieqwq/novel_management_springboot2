@@ -28,6 +28,6 @@
                 and adaptation_status = #{status}
             </if>
         </where>
-        order by adaptation_date desc
+        order by aid desc
     </select>
 </mapper>

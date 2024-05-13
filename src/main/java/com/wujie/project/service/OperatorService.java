@@ -7,11 +7,11 @@ import com.wujie.project.pojo.OperatorAuthority;
 import java.util.List;
 
 public interface OperatorService {
-    List<OperatorAuthority> selectOp(String bid);
+    List<OperatorAuthority> selectOp(Integer bid);
 
-    List<OperatorAuthority> selectOpApply(String bid);
+    List<OperatorAuthority> selectOpApply(Integer bid);
 
-    int deleteOp(String oaid);
+    int deleteOp(Integer oaid);
 
     int updateOp(OperatorAuthority op);
 

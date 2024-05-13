@@ -29,7 +29,7 @@
             </if>
         </where>
         and oa.authority_audit = 1
-        order by b.bid desc
+        order by b.bid desc,oa.oaid desc
     </select>
 
     <select id="selectOpApply" resultMap="oa">

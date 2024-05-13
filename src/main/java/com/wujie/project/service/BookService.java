@@ -7,13 +7,13 @@ import java.util.List;
 public interface BookService {
     int addOrUpdateBook(Book book);
 
-    int deleteBook(String bid);
+    int deleteBook(Integer bid);
 
     int updateBook(Book book);
 
-    List<Book> selectBookByUid(String uid);
+    List<Book> selectBookByUid(Integer uid);
 
-    Book selectBookByBid(String bid);
+    Book selectBookByBid(Integer bid);
 
-    String selectBidByBname(String bname);
+    Integer selectBidByBname(String bname);
 }

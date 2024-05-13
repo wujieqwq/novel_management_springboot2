@@ -9,8 +9,6 @@ import org.apache.ibatis.annotations.Select;
 public interface ChapterMapper extends BaseMapper<Chapter> {
 
     @Select("select count(cid) from chapter where bid = #{bid}")
-    Integer countChapter(String bid);
+    Integer countChapter(Integer bid);
 
-    @Select("select audit_status from chapter where cid = #{cid};")
-    Integer selectPreChapterStatus(String cid);
 }

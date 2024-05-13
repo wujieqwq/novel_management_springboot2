@@ -21,7 +21,7 @@ public class AdaptationServiceImpl implements AdaptationService {
     }
 
     @Override
-    public PageInfo<Adaptation> selectAdaptationByBid(Integer pageNum, Integer pageSize, String bid,String status) {
+    public PageInfo<Adaptation> selectAdaptationByBid(Integer pageNum, Integer pageSize, Integer bid,String status) {
         PageHelper.startPage(pageNum,pageSize);
         List<Adaptation> res = adaptationMapper.selectAdaptationByBid(bid,status);
         return new PageInfo<>(res);

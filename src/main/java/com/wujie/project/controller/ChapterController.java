@@ -1,5 +1,7 @@
 package com.wujie.project.controller;
 
+import cn.hutool.core.date.DateUtil;
+import com.github.pagehelper.PageInfo;
 import com.wujie.project.pojo.Chapter;
 import com.wujie.project.service.ChapterService;
 import com.wujie.project.utils.ResultInfo;
@@ -23,36 +25,39 @@ public class ChapterController {
     查询章节
      */
     @RequestMapping("/countChapter")
-    public ResultInfo countChapter(String bid){
+    public ResultInfo countChapter(Integer bid){
         Integer res = chapterService.countChapter(bid);
         return new ResultInfo(200,"查询成功",res);
     }
 
     @RequestMapping("/addOrUpdateChapter")
     public ResultInfo addOrUpdateChapter(@RequestBody Chapter chapter){
+        chapter.setChapterDate(DateUtil.date());
         chapterService.addOrUpdateChapter(chapter);
         return new ResultInfo(200,"操作成功");
     }
 
     @RequestMapping("/selectChapterByBid")
-    public ResultInfo selectChapterByBid(String bid){
-        List<Chapter> chapters = chapterService.selectChapterByBid(bid);
-        return new ResultInfo(200,"查询成功",chapters);
+    public ResultInfo selectChapterByBid(Integer pageNum,Integer pageSize,String bid){
+        PageInfo<Chapter> res = chapterService.selectChapterByBid(pageNum,pageSize,bid);
+        return new ResultInfo(200,"查询成功",res);
     }
 
     @RequestMapping("/deleteChapter")
-    public ResultInfo deleteChapter(String cid){
+    public ResultInfo deleteChapter(Integer cid){
         chapterService.deleteChapter(cid);
         return new ResultInfo(200,"删除成功");
     }
 
-    @RequestMapping("/selectPreChapterStatus")
-    public ResultInfo selectPreChapterStatus(Integer cid){
-        if(cid==1){
-          return new ResultInfo(200,"为查询到前一章",-1);
-        }
-        String c = String.valueOf(cid-1);
-        Integer s = chapterService.selectPreChapterStatus(c);
-        return new ResultInfo(200,"查询成功",s);
+    @RequestMapping("/selectSubPermission")
+    public ResultInfo selectPreChapterStatus(Integer bid){
+        Integer res = chapterService.selectSubPermission(bid);
+        return new ResultInfo(200,"查询成功",res);
+    }
+
+    @RequestMapping("/selectChapterByCid")
+    public ResultInfo selectChapterByCid(Integer cid){
+        Chapter res = chapterService.selectChapterByCid(cid);
+        return new ResultInfo(200,"查询成功",res);
     }
 }

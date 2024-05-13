@@ -1,17 +1,20 @@
 package com.wujie.project.service;
 
+import com.github.pagehelper.PageInfo;
 import com.wujie.project.pojo.Chapter;
 
 import java.util.List;
 
 public interface ChapterService {
-    Integer countChapter(String bid);
+    Integer countChapter(Integer bid);
 
     int addOrUpdateChapter(Chapter chapter);
 
-    int deleteChapter(String cid);
+    int deleteChapter(Integer cid);
 
-    List<Chapter> selectChapterByBid(String bid);
+    PageInfo<Chapter> selectChapterByBid(Integer pageNum, Integer pageSize, String bid);
 
-    Integer selectPreChapterStatus(String c);
+    Integer selectSubPermission(Integer bid);
+
+    Chapter selectChapterByCid(Integer cid);
 }

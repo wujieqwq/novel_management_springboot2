@@ -1,5 +1,6 @@
 package com.wujie.project.pojo;
 
+import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableId;
 import com.fasterxml.jackson.annotation.JsonFormat;
@@ -9,15 +10,15 @@ import java.util.Date;
 
 @Data
 public class BookReview {
-    @TableId
-    private String brid;
+    @TableId(value = "brid",type = IdType.AUTO)
+    private Integer brid;
     private String brContent;
     @JsonFormat(pattern = "yyyy-MM-dd")
     private Date brDate;
     private String customTag;
     private String tagStatus;
-    private String uid;
-    private String bid;
+    private Integer uid;
+    private Integer bid;
     @TableField(exist = false)
     private Book book;
     @TableField(exist = false)

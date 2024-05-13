@@ -26,14 +26,14 @@ public class PostServiceImpl implements PostService {
     @Autowired
     private OperationRecordMapper operationRecordMapper;
     @Override
-    public PageInfo<Post> selectPostPage(Integer pageNum, Integer pageSize, String bid) {
+    public PageInfo<Post> selectPostPage(Integer pageNum, Integer pageSize, Integer bid) {
         PageHelper.startPage(pageNum,pageSize);
         List<Post> lp = postMapper.selectAllPostByBid(bid);
         return new PageInfo<>(lp);
     }
 
     @Override
-    public int deletePostByPid(String pid) {
+    public int deletePostByPid(Integer pid) {
         return postMapper.deleteById(pid);
     }
 
@@ -42,8 +42,8 @@ public class PostServiceImpl implements PostService {
         int value = postMapper.insert(post);
         OperationRecord or = new OperationRecord();
         or.setOrDate(DateUtil.date());
-        Long l = postMapper.selectCount(new QueryWrapper<>());
-        or.setPid(String.valueOf(l));
+        Integer l = postMapper.selectCount(new QueryWrapper<>());
+        or.setPid(l);
         or.setUid(post.getUid());
         or.setOrContent("发布动态");
         operationRecordMapper.insert(or);

@@ -9,7 +9,7 @@ import java.util.List;
 
 @Mapper
 public interface BookReviewMapper extends BaseMapper<BookReview> {
-    List<BookReview> selectBookReviewByBid(String bid,@Param("type") String type);
+    List<BookReview> selectBookReviewByBid(Integer bid,@Param("type") String type);
 
-    List<BookReview> selectAllBookReviewByBid(String bid);
+    List<BookReview> selectAllBookReviewByBid(Integer bid);
 }

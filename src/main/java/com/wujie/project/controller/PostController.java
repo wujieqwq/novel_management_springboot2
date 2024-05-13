@@ -19,27 +19,27 @@ public class PostController {
     private PostService postService;
 
     @RequestMapping("/selectAllPost")
-    private ResultInfo selectAllPost(Integer pageNum,Integer pageSize,String bid){
+    private ResultInfo selectAllPost(Integer pageNum,Integer pageSize,Integer bid){
         PageInfo<Post> res = postService.selectPostPage(pageNum,pageSize,bid);
         return new ResultInfo(200,"查询成功",res);
     }
 
     @RequestMapping(value = "/{pid}",method = RequestMethod.DELETE)
-    private ResultInfo deletePostByPid(@PathVariable String pid){
+    private ResultInfo deletePostByPid(@PathVariable Integer pid){
         postService.deletePostByPid(pid);
         return new ResultInfo(200,"删除成功");
     }
 
     @RequestMapping("/insertPost")
     private ResultInfo insertPost(Post post,HttpSession session){
-        String uid = (String) session.getAttribute("uid");
+        Integer uid = (Integer) session.getAttribute("uid");
         post.setUid(uid);
         postService.insertPost(post);
         return new ResultInfo(200,"创建成功");
     }
 
     @RequestMapping("/updatePost")
-    public ResultInfo updatePost(String pid,Integer topStatus){
+    public ResultInfo updatePost(Integer pid,Integer topStatus){
         Post post = new Post();
         post.setPid(pid);
         post.setTopStatus(topStatus);

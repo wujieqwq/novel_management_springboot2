@@ -10,6 +10,6 @@ import java.util.List;
 public interface AdaptationMapper extends BaseMapper<Adaptation> {
 
 
-    List<Adaptation> selectAdaptationByBid(String bid, String status);
+    List<Adaptation> selectAdaptationByBid(Integer bid, String status);
 
 }

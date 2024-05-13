@@ -1,5 +1,6 @@
 package com.wujie.project.pojo;
 
+import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableId;
 import com.fasterxml.jackson.annotation.JsonFormat;
@@ -9,8 +10,8 @@ import java.util.Date;
 
 @Data
 public class Adaptation {
-    @TableId
-    private String aid;
+    @TableId(value = "aid",type = IdType.AUTO)
+    private Integer aid;
     private String studio;
     private String scope;
     private Integer licenseMoney;
@@ -20,7 +21,7 @@ public class Adaptation {
     private Date adaptationDate;
     private Integer adaptationDuration;
     private String remark;
-    private String bid;
+    private Integer bid;
     @TableField(exist = false)
     private Book book;
 }

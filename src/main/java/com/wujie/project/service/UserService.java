@@ -8,7 +8,7 @@ public interface UserService {
 
     User selectByEmail(String email);
 
-    User selectInfoById(String uid);
+    User selectInfoById(Integer uid);
 
     void updatePassWordByEmail(String email, String password);
 
@@ -18,5 +18,5 @@ public interface UserService {
 
     String selectUidByEmail(String email);
 
-    User selectUserByUidWithAu(String uid);
+    User selectUserByUidWithAu(Integer uid);
 }

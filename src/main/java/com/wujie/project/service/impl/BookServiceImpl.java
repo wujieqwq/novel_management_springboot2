@@ -26,7 +26,7 @@ public class BookServiceImpl implements BookService {
     }
 
     @Override
-    public int deleteBook(String bid) {
+    public int deleteBook(Integer bid) {
         return bookMapper.deleteById(bid);
     }
 
@@ -36,17 +36,17 @@ public class BookServiceImpl implements BookService {
     }
 
     @Override
-    public List<Book> selectBookByUid(String uid) {
+    public List<Book> selectBookByUid(Integer uid) {
         return bookMapper.selectByUid(uid);
     }
 
     @Override
-    public Book selectBookByBid(String bid) {
+    public Book selectBookByBid(Integer bid) {
         return bookMapper.selectByBid(bid);
     }
 
     @Override
-    public String selectBidByBname(String bname) {
+    public Integer selectBidByBname(String bname) {
         QueryWrapper<Book> wrapper = new QueryWrapper<>();
         wrapper.eq("bname",bname);
         return bookMapper.selectOne(wrapper).getBid();

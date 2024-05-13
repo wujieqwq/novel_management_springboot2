@@ -16,17 +16,17 @@ public class OperatorServiceImpl implements OperatorService {
     @Autowired
     private OperatorMapper operatorMapper;
     @Override
-    public List<OperatorAuthority> selectOp(String bid) {
+    public List<OperatorAuthority> selectOp(Integer bid) {
         return operatorMapper.selectOp(bid);
     }
 
     @Override
-    public List<OperatorAuthority> selectOpApply(String bid) {
+    public List<OperatorAuthority> selectOpApply(Integer bid) {
         return operatorMapper.selectOpApply(bid);
     }
 
     @Override
-    public int deleteOp(String oaid) {
+    public int deleteOp(Integer oaid) {
         return operatorMapper.deleteById(oaid);
     }
 

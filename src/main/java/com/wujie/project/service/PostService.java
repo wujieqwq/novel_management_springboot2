@@ -4,9 +4,9 @@ import com.github.pagehelper.PageInfo;
 import com.wujie.project.pojo.Post;
 
 public interface PostService{
-    PageInfo<Post> selectPostPage(Integer pageNum, Integer pageSize, String bid);
+    PageInfo<Post> selectPostPage(Integer pageNum, Integer pageSize, Integer bid);
 
-    int deletePostByPid(String pid);
+    int deletePostByPid(Integer pid);
 
     int insertPost(Post post);
 

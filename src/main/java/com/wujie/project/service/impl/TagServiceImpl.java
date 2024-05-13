@@ -22,14 +22,14 @@ public class TagServiceImpl implements TagService {
     @Override
     public void setTags(TagSet tagSet) {
         List<String> tags = tagSet.getTags();
-        String bid = tagSet.getBid();
+        Integer bid = tagSet.getBid();
         for(String i:tags){
-            tagMapper.insertBookTag(bid,i);
+            tagMapper.insertBookTag(bid, Integer.valueOf(i));
         }
     }
 
     @Override
-    public List<String> selectTagByBid(String bid) {
+    public List<String> selectTagByBid(Integer bid) {
         return tagMapper.selectTagByBid(bid);
     }
 }

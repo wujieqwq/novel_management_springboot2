@@ -18,12 +18,12 @@ public class ViolationRecordServiceImpl implements ViolationRecordService {
     @Autowired
     private ViolationRecordMapper violationRecordMapper;
     @Override
-    public int deleteRecord(String vrid) {
+    public int deleteRecord(Integer vrid) {
         return violationRecordMapper.deleteById(vrid);
     }
 
     @Override
-    public int insertVRecord(ViolationRecord vr, String uid) {
+    public int insertVRecord(ViolationRecord vr, Integer uid) {
         vr.setUid(uid);
         vr.setVrDate(DateUtil.date());
         return violationRecordMapper.insert(vr);

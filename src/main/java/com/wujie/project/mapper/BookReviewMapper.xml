@@ -33,7 +33,7 @@
             and br.custom_tag is not null
             and br.tag_status = #{type}
         </where>
-        order by br_date desc
+        order by brid desc
     </select>
     <select id="selectAllBookReviewByBid" resultMap="bru">
         select

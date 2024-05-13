@@ -8,6 +8,7 @@ import com.wujie.project.pojo.BookReview;
 import com.wujie.project.pojo.Sign;
 import com.wujie.project.pojo.Tag;
 import com.wujie.project.service.AdaptationService;
+import com.wujie.project.service.SignService;
 import com.wujie.project.service.impl.AdaptationServiceImpl;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -36,10 +37,10 @@ public class MainTest {
     private BookReviewMapper bookReviewMapper;
 
     @Autowired
-    private AdaptationMapper adaptationMapper;
+    private SignService signService;
 
     @Test
     public void test(){
-        List<Adaptation> adaptations = adaptationMapper.selectAdaptationByBid("1",null);
+        PageInfo<Sign> signPageInfo = signService.selectSign(1, 10, null, null);
     }
 }

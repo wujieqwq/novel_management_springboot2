@@ -14,6 +14,6 @@
     </resultMap>
 
     <select id="selectAllfb" resultMap="fb">
-        select fid,feedback_content,feedback_date,f.uid,uname from feedback f,user u where f.uid = u.uid
+        select fid,feedback_content,feedback_date,f.uid,uname from feedback f,user u where f.uid = u.uid order by fid desc
     </select>
 </mapper>

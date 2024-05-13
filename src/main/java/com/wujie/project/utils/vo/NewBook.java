@@ -11,7 +11,7 @@ import java.util.Stack;
 @Data
 public class NewBook {
     @TableId
-    private String bid;
+    private Integer bid;
     private String bname;
     private String introduction;
     private String bookStatus;

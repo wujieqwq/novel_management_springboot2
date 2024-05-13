@@ -23,7 +23,7 @@ public class OperatorController {
     搜索审核通过的运营员，其中包含管理作品与权限
      */
     @RequestMapping("/selectOp")
-    public ResultInfo selectOp(String bid){
+    public ResultInfo selectOp(Integer bid){
         List<OperatorAuthority> res = operatorService.selectOp(bid);
         return new ResultInfo(200,"查询成功",res);
     }
@@ -32,13 +32,13 @@ public class OperatorController {
     搜索审核员申请
      */
     @RequestMapping("/selectOpApply")
-    public ResultInfo selectOpApply(String bid){
+    public ResultInfo selectOpApply(Integer bid){
         List<OperatorAuthority> res = operatorService.selectOpApply(bid);
         return new ResultInfo(200,"查询成功",res);
     }
 
     @RequestMapping("/deleteOp")
-    public ResultInfo deleteOp(String oaid){
+    public ResultInfo deleteOp(Integer oaid){
         operatorService.deleteOp(oaid);
         return new ResultInfo(200,"删除成功");
     }

@@ -21,7 +21,7 @@ public class ReviewServiceImpl implements ReviewService {
 
 
     @Override
-    public PageInfo<BookReview> selectBookReviewByBid(Integer pageNum, Integer pageSize, String bid,String type) {
+    public PageInfo<BookReview> selectBookReviewByBid(Integer pageNum, Integer pageSize, Integer bid,String type) {
         PageHelper.startPage(pageNum,pageSize);
         List<BookReview> res = new ArrayList<>();
         if ("-1".equals(type)){
@@ -33,7 +33,7 @@ public class ReviewServiceImpl implements ReviewService {
     }
 
     @Override
-    public int updateCustomTag(String brid, String tagStatus) {
+    public int updateCustomTag(Integer brid, String tagStatus) {
         BookReview bookReview = new BookReview();
         bookReview.setBrid(brid);
         bookReview.setTagStatus(tagStatus);

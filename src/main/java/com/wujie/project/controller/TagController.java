@@ -33,7 +33,7 @@ public class TagController {
     }
 
     @RequestMapping("selectTagByBid")
-    public ResultInfo selectTagByBid(String bid){
+    public ResultInfo selectTagByBid(Integer bid){
       List<String> res = tagService.selectTagByBid(bid);
       return new ResultInfo(200,"查询成功",res);
     }

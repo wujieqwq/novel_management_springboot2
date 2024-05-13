@@ -24,7 +24,7 @@ public class AdaptationController {
     }
 
     @RequestMapping("/selectAd")
-    public ResultInfo selectAdByBid(Integer pageNum,Integer pageSize,String bid,String status){
+    public ResultInfo selectAdByBid(Integer pageNum,Integer pageSize,Integer bid,String status){
         PageInfo<Adaptation> res = adaptationService.selectAdaptationByBid(pageNum,pageSize,bid,status);
         return new ResultInfo(200,"查询成功",res);
     }

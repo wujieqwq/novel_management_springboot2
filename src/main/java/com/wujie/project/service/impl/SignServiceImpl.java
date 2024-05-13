@@ -20,7 +20,7 @@ public class SignServiceImpl implements SignService{
     }
 
     @Override
-    public PageInfo<Sign> selectSignByBid(Integer pageNum, Integer pageSize, String bid,String status) {
+    public PageInfo<Sign> selectSign(Integer pageNum, Integer pageSize, Integer bid,Integer status) {
         PageHelper.startPage(pageNum,pageSize);
         List<Sign> res = signMapper.selectSignByBid(bid,status);
         return new PageInfo<>(res);

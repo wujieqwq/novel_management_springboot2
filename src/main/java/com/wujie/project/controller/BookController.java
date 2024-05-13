@@ -47,9 +47,9 @@ public class BookController {
         MultipartFile picture = mrequest.getFile("picture");
         String _bid = mrequest.getParameter("bid");
         String changeP = mrequest.getParameter("changeP");
-        book.setBid(_bid);
+        book.setBid(Integer.valueOf(_bid));
         book.setBname(bname);
-        book.setUid(uid);
+        book.setUid(Integer.valueOf(uid));
         book.setIntroduction(introduction);
         book.setBookStatus(bookStatus);
         if ("1".equals(changeP)||changeP==null){
@@ -69,14 +69,14 @@ public class BookController {
     }
 
     @RequestMapping("/deleteBook")
-    public ResultInfo deleteBook(String bid){
+    public ResultInfo deleteBook(Integer bid){
         bookService.deleteBook(bid);
         return new ResultInfo(200,"创建成功");
     }
 
     @RequestMapping("/selectBook")
     public ResultInfo selectBookByUid(HttpServletRequest request){
-        String uid = (String) request.getAttribute("uid");
+        Integer uid = (Integer) request.getAttribute("uid");
         List<Book> res = bookService.selectBookByUid(uid);
         return new ResultInfo(200,"查询成功",res);
     }
@@ -87,7 +87,7 @@ public class BookController {
         book.setBid(newBook.getBid());
         book.setBname(newBook.getBname());
         book.setIntroduction(newBook.getIntroduction());
-        book.setUid((String) request.getAttribute("uid"));
+        book.setUid((Integer) request.getAttribute("uid"));
         book.setBookStatus(newBook.getBookStatus());
         book.setBookDate(DateUtil.date());
         MultipartFile picture = newBook.getPicture();
@@ -106,14 +106,14 @@ public class BookController {
     }
 
     @RequestMapping("/selectBookByBid")
-    public ResultInfo selectBookByUid(String bid){
+    public ResultInfo selectBookByUid(Integer bid){
         Book res = bookService.selectBookByBid(bid);
         return new ResultInfo(200,"查询成功",res);
     }
 
     @RequestMapping("/bnameIsExist")
     public ResultInfo selectBidByBname(String bname){
-        String uid = bookService.selectBidByBname(bname);
+        Integer uid = bookService.selectBidByBname(bname);
         if (uid!=null) {
             return new ResultInfo(4000, "书名已存在");
         }

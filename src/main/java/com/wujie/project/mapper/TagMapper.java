@@ -16,8 +16,8 @@ public interface TagMapper extends BaseMapper<Tag> {
     ArrayList<Tag> selectAll();
 
     @Insert("insert into book_has_tag (bid,tid) values (#{bid},#{tid})")
-    void insertBookTag(String bid, String tid);
+    void insertBookTag(Integer bid, Integer tid);
 
     @Select("select tag.tid from book_has_tag bht,tag where bht.tid=tag.tid and bht.bid = #{bid}")
-    List<String> selectTagByBid(String bid);
+    List<String> selectTagByBid(Integer bid);
 }

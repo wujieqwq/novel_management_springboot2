@@ -10,5 +10,5 @@ import java.util.List;
 public interface PostMapper extends BaseMapper<Post> {
 
 
-    List<Post> selectAllPostByBid(String bid);
+    List<Post> selectAllPostByBid(Integer bid);
 }

@@ -1,5 +1,6 @@
 package com.wujie.project.pojo;
 
+import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableId;
 import com.fasterxml.jackson.annotation.JsonFormat;
@@ -9,8 +10,8 @@ import java.util.Date;
 
 @Data
 public class FeedBack {
-    @TableId
-    private String fid;
+    @TableId(value = "fid",type = IdType.AUTO)
+    private Integer fid;
     private String feedbackContent;
     @JsonFormat(pattern = "yyyy-MM-dd")
     private Date feedbackDate;

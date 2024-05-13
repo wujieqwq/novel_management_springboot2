@@ -20,13 +20,13 @@ public class ReviewController {
     private ReviewService reviewService;
 
     @RequestMapping("/selectBookReviewByBid")
-    public ResultInfo selectBookReviewByBid(Integer pageNum,Integer pageSize,String bid,String type){
+    public ResultInfo selectBookReviewByBid(Integer pageNum,Integer pageSize,Integer bid,String type){
         PageInfo<BookReview> res = reviewService.selectBookReviewByBid(pageNum,pageSize,bid,type);
         return new ResultInfo(200,"查询成功",res);
     }
 
     @RequestMapping("/updateCustomTag")
-    public ResultInfo updateCustomTag(String brid,String tagStatus){
+    public ResultInfo updateCustomTag(Integer brid,String tagStatus){
         reviewService.updateCustomTag(brid,tagStatus);
         return new ResultInfo(200,"修改成功");
     }

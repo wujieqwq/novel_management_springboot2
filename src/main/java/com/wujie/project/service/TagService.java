@@ -10,5 +10,5 @@ public interface TagService {
 
     void setTags(TagSet tagSet);
 
-    List<String> selectTagByBid(String bid);
+    List<String> selectTagByBid(Integer bid);
 }

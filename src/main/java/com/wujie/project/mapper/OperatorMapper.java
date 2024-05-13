@@ -9,9 +9,9 @@ import java.util.List;
 
 @Mapper
 public interface OperatorMapper extends BaseMapper<OperatorAuthority> {
-    List<OperatorAuthority> selectOp(String bid);
+    List<OperatorAuthority> selectOp(Integer bid);
 
-    List<OperatorAuthority> selectOpApply(String bid);
+    List<OperatorAuthority> selectOpApply(Integer bid);
 
     List<OperationRecord> selectRecord();
 }

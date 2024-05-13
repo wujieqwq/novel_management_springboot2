@@ -1,5 +1,6 @@
 package com.wujie.project.pojo;
 
+import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableId;
 import com.fasterxml.jackson.annotation.JsonFormat;
@@ -9,13 +10,13 @@ import java.util.Date;
 
 @Data
 public class OperationRecord {
-    @TableId
-    private String orid;
+    @TableId(value = "orid",type = IdType.AUTO)
+    private Integer orid;
     private String orContent;
     @JsonFormat(pattern = "yyyy-MM-dd")
     private Date orDate;
-    private String uid;
-    private String pid;
+    private Integer uid;
+    private Integer pid;
     @TableField(exist = false)
     private User user;
     @TableField(exist = false)

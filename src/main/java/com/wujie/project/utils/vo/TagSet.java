@@ -6,6 +6,6 @@ import java.util.List;
 
 @Data
 public class TagSet {
-    private String bid;
+    private Integer bid;
     private List<String> tags;
 }

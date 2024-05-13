@@ -23,7 +23,7 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public User selectInfoById(String uid) {
+    public User selectInfoById(Integer uid) {
         return userMapper.selectById(uid);
     }
 
@@ -54,7 +54,7 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public User selectUserByUidWithAu(String uid) {
+    public User selectUserByUidWithAu(Integer uid) {
         return null;
     }
 }

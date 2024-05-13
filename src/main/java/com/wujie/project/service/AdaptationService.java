@@ -7,7 +7,7 @@ import com.wujie.project.pojo.Adaptation;
 public interface AdaptationService{
 
 
-    PageInfo<Adaptation> selectAdaptationByBid(Integer PageNum,Integer PageSize,String bid,String status);
+    PageInfo<Adaptation> selectAdaptationByBid(Integer PageNum,Integer PageSize,Integer bid,String status);
 
     Integer insertAdApply(Adaptation adaptation);
 }

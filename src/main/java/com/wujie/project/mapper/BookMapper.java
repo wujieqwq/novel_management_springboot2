@@ -10,9 +10,9 @@ import java.util.List;
 @Mapper
 public interface BookMapper extends BaseMapper<Book> {
 
-    @Select("select * from book where uid = #{uid} order by book_date desc")
-    List<Book> selectByUid(String uid);
+    @Select("select * from book where uid = #{uid} order by bid desc")
+    List<Book> selectByUid(Integer uid);
 
     @Select("select * from book where bid = #{bid}")
-    Book selectByBid(String bid);
+    Book selectByBid(Integer bid);
 }

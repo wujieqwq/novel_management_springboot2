@@ -27,7 +27,7 @@ public class UserController {
         if(user==null||!user.getPassword().equals(password)){
             return new ResultInfo(400,"邮箱或密码错误");
         }
-        String token = JwtUtil.generateToken(user.getUid());
+        String token = JwtUtil.generateToken(String.valueOf(user.getUid()));
         return new ResultInfo(200,"登录成功",user.getUserType(),token);
     }
 
@@ -65,14 +65,14 @@ public class UserController {
 
     @RequestMapping("/alterInfo")
     public ResultInfo alterInfo(@RequestBody User user,HttpServletRequest request){
-        user.setUid((String) request.getAttribute("uid"));
+        user.setUid((Integer) request.getAttribute("uid"));
         userService.updateUser(user);
         return new ResultInfo(200,"修改成功");
     }
 
     @RequestMapping("/selectInfo")
     public ResultInfo selectInfo(HttpServletRequest request){
-        String uid = (String) request.getAttribute("uid");
+        Integer uid = (Integer) request.getAttribute("uid");
         User user = userService.selectInfoById(uid);
         user.setPassword("");
         return new ResultInfo(200,"查询成功",user);
