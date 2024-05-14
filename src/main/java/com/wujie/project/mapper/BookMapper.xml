@@ -15,4 +15,20 @@
         <result property="remark" column="remark"/>
         <association property="book" column="bid" select="com.wujie.project.mapper.BookMapper.selectById"/>
     </resultMap>
+    <select id="selectNoSignBook" resultType="com.wujie.project.pojo.Book">
+        select *
+        from book b
+        where (b.bid not in (select bid from sign)
+        or b.bid not in (
+        select s.bid
+        from sign s
+        where s.bid = b.bid
+        and date_add(sign_date, interval sign_duration year)>=CURDATE()))
+        and b.book_status=1
+    </select>
+    <select id="selectPerAdBook" resultType="com.wujie.project.pojo.Book">
+        select *
+        from book b
+        where (b.bid not in (select bid from sign where sign_type=1 or sign_type = 2))
+    </select>
 </mapper>

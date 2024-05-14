@@ -16,4 +16,6 @@ public interface BookService {
     Book selectBookByBid(Integer bid);
 
     Integer selectBidByBname(String bname);
+
+    Integer selectChapterNumber(Integer bid);
 }

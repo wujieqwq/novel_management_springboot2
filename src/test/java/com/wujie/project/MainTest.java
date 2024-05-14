@@ -3,10 +3,7 @@ package com.wujie.project;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.github.pagehelper.PageInfo;
 import com.wujie.project.mapper.*;
-import com.wujie.project.pojo.Adaptation;
-import com.wujie.project.pojo.BookReview;
-import com.wujie.project.pojo.Sign;
-import com.wujie.project.pojo.Tag;
+import com.wujie.project.pojo.*;
 import com.wujie.project.service.AdaptationService;
 import com.wujie.project.service.SignService;
 import com.wujie.project.service.impl.AdaptationServiceImpl;
@@ -34,13 +31,13 @@ public class MainTest {
     private SignMapper signMapper;
 
     @Autowired
-    private BookReviewMapper bookReviewMapper;
+    private BookMapper bookMapper;
 
     @Autowired
-    private SignService signService;
+    private ChapterReviewMapper chapterReviewMapper;
 
     @Test
     public void test(){
-        PageInfo<Sign> signPageInfo = signService.selectSign(1, 10, null, null);
+        List<ChapterReview> chapterReviews = chapterReviewMapper.selectChapterReview(3, 18);
     }
 }

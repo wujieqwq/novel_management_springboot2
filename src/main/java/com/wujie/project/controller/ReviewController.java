@@ -2,6 +2,7 @@ package com.wujie.project.controller;
 
 import com.github.pagehelper.PageInfo;
 import com.wujie.project.pojo.BookReview;
+import com.wujie.project.pojo.ChapterReview;
 import com.wujie.project.service.ReviewService;
 import com.wujie.project.utils.ResultInfo;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -29,5 +30,23 @@ public class ReviewController {
     public ResultInfo updateCustomTag(Integer brid,String tagStatus){
         reviewService.updateCustomTag(brid,tagStatus);
         return new ResultInfo(200,"修改成功");
+    }
+
+    @RequestMapping("/selectChapterReview")
+    public ResultInfo selectChapter(Integer pageNum,Integer pageSize,Integer bid,Integer cid){
+        PageInfo<ChapterReview> res = reviewService.selectChapterReview(pageNum,pageSize,bid,cid);
+        return new ResultInfo(200,"查询成功",res);
+    }
+
+
+    @RequestMapping("/deleteChapterReview")
+    public ResultInfo deleteChapterReview(Integer crid){
+        reviewService.deleteChapterReview(crid);
+        return new ResultInfo(200,"删除成功");
+    }
+    @RequestMapping("/deleteBookReview")
+    public ResultInfo deleteBookReview(Integer brid){
+        reviewService.deleteBookReview(brid);
+        return new ResultInfo(200,"删除成功");
     }
 }

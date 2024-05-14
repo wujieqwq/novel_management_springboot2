@@ -3,6 +3,7 @@ package com.wujie.project.controller;
 import cn.hutool.core.date.DateUtil;
 import com.github.pagehelper.PageInfo;
 import com.wujie.project.pojo.Chapter;
+import com.wujie.project.pojo.ChapterReview;
 import com.wujie.project.service.ChapterService;
 import com.wujie.project.utils.ResultInfo;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -58,6 +59,12 @@ public class ChapterController {
     @RequestMapping("/selectChapterByCid")
     public ResultInfo selectChapterByCid(Integer cid){
         Chapter res = chapterService.selectChapterByCid(cid);
+        return new ResultInfo(200,"查询成功",res);
+    }
+
+    @RequestMapping("/selectAllChapterNumber")
+    public ResultInfo selectAllChapterNumber(Integer bid){
+        List<Chapter> res = chapterService.selectAllChapterNumber(bid);
         return new ResultInfo(200,"查询成功",res);
     }
 }

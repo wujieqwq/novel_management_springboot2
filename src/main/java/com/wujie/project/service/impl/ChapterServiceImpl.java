@@ -6,6 +6,7 @@ import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 import com.wujie.project.mapper.ChapterMapper;
 import com.wujie.project.pojo.Chapter;
+import com.wujie.project.pojo.ChapterReview;
 import com.wujie.project.service.ChapterService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -66,5 +67,10 @@ public class ChapterServiceImpl implements ChapterService {
     @Override
     public Chapter selectChapterByCid(Integer cid) {
         return chapterMapper.selectById(cid);
+    }
+
+    @Override
+    public List<Chapter> selectAllChapterNumber(Integer bid) {
+        return chapterMapper.selectAllChapterNumber(bid);
     }
 }

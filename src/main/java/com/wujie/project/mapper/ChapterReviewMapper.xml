@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.wujie.project.mapper.ChapterReviewMapper">
+        <resultMap id="cr" type="com.wujie.project.pojo.ChapterReview">
+            <id property="crid" column="crid"/>
+            <result property="crContent" column="cr_content"/>
+            <result property="crDate" column="cr_date"/>
+            <association property="user" javaType="com.wujie.project.pojo.User">
+                <id property="uid" column="uid"/>
+                <result property="uname" column="uname"/>
+            </association>
+        </resultMap>
+    <select id="selectChapterReview" resultMap="cr">
+        select
+            cr.cid,
+            cr.cr_content,
+            cr.cr_date,
+            cr.crid,
+            u.uid,
+            u.uname
+        from chapter_review cr,user u
+        <where>
+            and cr.uid=u.uid
+            <if test="bid!=null">
+               and cr.cid in (select cid from chapter where bid = #{bid})
+            </if>
+            <if test="cid!=null">
+               and cr.cid = #{cid}
+            </if>
+        </where>
+        order by cr_date desc
+    </select>
+</mapper>

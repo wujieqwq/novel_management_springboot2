@@ -15,4 +15,11 @@ public interface BookMapper extends BaseMapper<Book> {
 
     @Select("select * from book where bid = #{bid}")
     Book selectByBid(Integer bid);
+
+    List<Book> selectNoSignBook();
+
+    List<Book> selectPerAdBook();
+
+    @Select("select max(chapter_number) from chapter where bid = #{bid}")
+    Integer selectChapterNumber(Integer bid);
 }

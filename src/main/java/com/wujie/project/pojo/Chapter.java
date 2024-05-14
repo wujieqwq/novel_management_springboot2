@@ -12,6 +12,7 @@ import java.util.Date;
 public class Chapter {
     @TableId(value = "cid",type = IdType.AUTO)
     private Integer cid;
+    private Integer chapterNumber;
     private String cname;
     private String chapterContent;
     @JsonFormat(pattern = "yyyy-MM-dd")

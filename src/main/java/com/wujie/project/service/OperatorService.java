@@ -1,6 +1,7 @@
 package com.wujie.project.service;
 
 import com.github.pagehelper.PageInfo;
+import com.wujie.project.pojo.Book;
 import com.wujie.project.pojo.OperationRecord;
 import com.wujie.project.pojo.OperatorAuthority;
 
@@ -16,4 +17,6 @@ public interface OperatorService {
     int updateOp(OperatorAuthority op);
 
     PageInfo<OperationRecord> selectRecord(Integer pageNum, Integer pageSize);
+
+    List<Book> selectPerBid(Integer uid);
 }

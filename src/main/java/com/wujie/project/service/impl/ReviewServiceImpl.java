@@ -5,6 +5,7 @@ import com.github.pagehelper.PageInfo;
 import com.wujie.project.mapper.BookReviewMapper;
 import com.wujie.project.mapper.ChapterReviewMapper;
 import com.wujie.project.pojo.BookReview;
+import com.wujie.project.pojo.ChapterReview;
 import com.wujie.project.service.ReviewService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -38,6 +39,23 @@ public class ReviewServiceImpl implements ReviewService {
         bookReview.setBrid(brid);
         bookReview.setTagStatus(tagStatus);
         return bookReviewMapper.updateById(bookReview);
+    }
+
+    @Override
+    public PageInfo<ChapterReview> selectChapterReview(Integer pageNum, Integer pageSize, Integer bid, Integer cid) {
+        PageHelper.startPage(pageNum,pageSize);
+        List<ChapterReview> res = chapterReviewMapper.selectChapterReview(bid,cid);
+        return new PageInfo<>(res);
+    }
+
+    @Override
+    public Integer deleteChapterReview(Integer crid) {
+        return chapterReviewMapper.deleteById(crid);
+    }
+
+    @Override
+    public Integer deleteBookReview(Integer brid) {
+        return bookReviewMapper.deleteById(brid);
     }
 
 }

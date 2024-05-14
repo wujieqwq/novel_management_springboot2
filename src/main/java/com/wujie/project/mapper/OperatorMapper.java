@@ -1,6 +1,7 @@
 package com.wujie.project.mapper;
 
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
+import com.wujie.project.pojo.Book;
 import com.wujie.project.pojo.OperationRecord;
 import com.wujie.project.pojo.OperatorAuthority;
 import org.apache.ibatis.annotations.Mapper;
@@ -14,4 +15,6 @@ public interface OperatorMapper extends BaseMapper<OperatorAuthority> {
     List<OperatorAuthority> selectOpApply(Integer bid);
 
     List<OperationRecord> selectRecord();
+
+    List<Book> selectPerBid(Integer uid);
 }

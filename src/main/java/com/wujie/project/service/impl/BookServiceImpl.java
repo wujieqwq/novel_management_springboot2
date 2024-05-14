@@ -51,4 +51,9 @@ public class BookServiceImpl implements BookService {
         wrapper.eq("bname",bname);
         return bookMapper.selectOne(wrapper).getBid();
     }
+
+    @Override
+    public Integer selectChapterNumber(Integer bid) {
+        return  bookMapper.selectChapterNumber(bid);
+    }
 }

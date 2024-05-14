@@ -120,4 +120,9 @@ public class BookController {
         return new ResultInfo(200, "书名可用");
     }
 
+    @RequestMapping("/selectChapterNumber")//查询最大章节序号
+    public ResultInfo selectBidByBname(Integer bid){
+        Integer res = bookService.selectChapterNumber(bid);
+        return new ResultInfo(200, "查询成功",res);
+    }
 }

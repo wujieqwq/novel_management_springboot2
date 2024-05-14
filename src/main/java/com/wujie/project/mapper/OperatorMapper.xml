@@ -71,4 +71,23 @@
         order by or_date desc
     </select>
 
+    <resultMap id="oabu" type="com.wujie.project.pojo.OperatorAuthority">
+        <id property="oaid" column="oaid"/>
+        <result property="authorityType" column="authority_type"/>
+        <association property="user" javaType="com.wujie.project.pojo.User">
+            <id property="uid" column="uid"/>
+            <result property="uname" column="uname"/>
+        </association>
+        <association property="book" javaType="com.wujie.project.pojo.Book">
+            <id property="bid" column="bid"/>
+            <result property="bname" column="bname"/>
+        </association>
+    </resultMap>
+    <select id="selectPerBid" resultMap="oabu">
+        select oa.oaid,oa.authority_type,b.bid,b.bname,u.uid,u.uname
+        from operator_authority oa
+        join book b on oa.bid = b.bid
+        join user u on oa.uid = u.uid
+        order by bid desc ;
+    </select>
 </mapper>

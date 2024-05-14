@@ -7,6 +7,7 @@ import com.wujie.project.utils.ResultInfo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 @RestController
@@ -22,13 +23,13 @@ public class ViolationRecordController {
         return new ResultInfo(200,"查询成功",res);
     }
     @RequestMapping("/insertVRecord")
-    public ResultInfo insertVRecord(ViolationRecord vr, HttpSession session){
-        Integer uid = (Integer) session.getAttribute("uid");
+    public ResultInfo insertVRecord(ViolationRecord vr, HttpServletRequest request){
+        Integer uid = (Integer) request.getAttribute("uid");
         violationRecordService.insertVRecord(vr,uid);
         return new ResultInfo(200,"添加成功");
     }
-    @RequestMapping(value = "/{vrid}",method = RequestMethod.DELETE)
-    public ResultInfo deleteVRecord(@PathVariable Integer vrid){
+    @RequestMapping(value = "/deleteVRecord")
+    public ResultInfo deleteVRecord(Integer vrid){
         violationRecordService.deleteRecord(vrid);
         return new ResultInfo(200,"删除成功");
     }

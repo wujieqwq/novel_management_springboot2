@@ -9,6 +9,7 @@ import org.apache.ibatis.annotations.Delete;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 @RestController
@@ -24,15 +25,15 @@ public class PostController {
         return new ResultInfo(200,"查询成功",res);
     }
 
-    @RequestMapping(value = "/{pid}",method = RequestMethod.DELETE)
-    private ResultInfo deletePostByPid(@PathVariable Integer pid){
+    @RequestMapping(value = "/deletePost")
+    private ResultInfo deletePostByPid(Integer pid){
         postService.deletePostByPid(pid);
         return new ResultInfo(200,"删除成功");
     }
 
     @RequestMapping("/insertPost")
-    private ResultInfo insertPost(Post post,HttpSession session){
-        Integer uid = (Integer) session.getAttribute("uid");
+    private ResultInfo insertPost(Post post, HttpServletRequest request){
+        Integer uid = (Integer) request.getAttribute("uid");
         post.setUid(uid);
         postService.insertPost(post);
         return new ResultInfo(200,"创建成功");

@@ -1,6 +1,7 @@
 package com.wujie.project.controller;
 
 import com.github.pagehelper.PageInfo;
+import com.wujie.project.pojo.Book;
 import com.wujie.project.pojo.OperationRecord;
 import com.wujie.project.pojo.OperatorAuthority;
 import com.wujie.project.service.OperatorService;
@@ -10,6 +11,7 @@ import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import javax.servlet.http.HttpServletRequest;
 import java.util.List;
 
 @RestController
@@ -57,9 +59,10 @@ public class OperatorController {
         return new ResultInfo(200,"查询成功",res);
     }
 
-    @RequestMapping("/selectAuWithBook")
-    public ResultInfo selectAuWithBook(){
-
-        return new ResultInfo(200,"查询成功");
+    @RequestMapping("/selectPerBid")
+    public ResultInfo selectPerBid(HttpServletRequest request){
+        Integer uid = (Integer) request.getAttribute("uid");
+        List<Book> res = operatorService.selectPerBid(uid);
+        return new ResultInfo(200,"查询成功",res);
     }
 }

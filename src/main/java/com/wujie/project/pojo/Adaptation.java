@@ -15,7 +15,7 @@ public class Adaptation {
     private String studio;
     private String scope;
     private Integer licenseMoney;
-    private String adaptationType;
+    private Integer adaptationType;
     private Integer adaptationStatus;
     @JsonFormat(pattern = "yyyy-MM-dd")
     private Date adaptationDate;
