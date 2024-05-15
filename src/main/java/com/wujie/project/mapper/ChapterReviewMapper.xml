@@ -11,16 +11,25 @@
                 <id property="uid" column="uid"/>
                 <result property="uname" column="uname"/>
             </association>
+            <association property="chapter" javaType="com.wujie.project.pojo.Chapter">
+                <id property="cid" column="cid"/>
+                <result property="cname" column="cname"/>
+                <result property="chapterNumber" column="chapter_number"/>
+            </association>
         </resultMap>
     <select id="selectChapterReview" resultMap="cr">
         select
-            cr.cid,
             cr.cr_content,
             cr.cr_date,
             cr.crid,
             u.uid,
-            u.uname
-        from chapter_review cr,user u
+            u.uname,
+            c.cid,
+            c.chapter_number,
+            c.cname
+        from chapter_review cr
+        join user u on cr.uid = u.uid
+        join chapter c on c.cid = cr.cid
         <where>
             and cr.uid=u.uid
             <if test="bid!=null">

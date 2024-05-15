@@ -38,6 +38,6 @@ public class MainTest {
 
     @Test
     public void test(){
-        List<ChapterReview> chapterReviews = chapterReviewMapper.selectChapterReview(3, 18);
+        List<ChapterReview> chapterReviews = chapterReviewMapper.selectChapterReview(5, null);
     }
 }

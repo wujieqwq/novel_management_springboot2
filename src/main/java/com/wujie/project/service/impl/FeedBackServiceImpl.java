@@ -16,9 +16,9 @@ public class FeedBackServiceImpl implements FeedBackService {
     @Autowired
     private FeedBackMapper feedBackMapper;
     @Override
-    public PageInfo<FeedBack> selectAllfb(Integer pageNum,Integer pageSize) {
+    public PageInfo<FeedBack> selectAllfb(Integer pageNum,Integer pageSize,String searchText,Integer uid) {
         PageHelper.startPage(pageNum,pageSize);
-        List<FeedBack> feedBacks = feedBackMapper.selectAllfb();
+        List<FeedBack> feedBacks = feedBackMapper.selectAllfb(searchText,uid);
         PageInfo<FeedBack> feedBackPageInfo = new PageInfo<>(feedBacks);
         return feedBackPageInfo;
     }
@@ -26,5 +26,17 @@ public class FeedBackServiceImpl implements FeedBackService {
     @Override
     public void insertFB(FeedBack feedBack) {
         feedBackMapper.insert(feedBack);
+    }
+
+    @Override
+    public PageInfo<FeedBack> selectFBByUid(Integer pageNum, Integer pageSize, Integer uid) {
+        PageHelper.startPage(pageNum,pageSize);
+        List<FeedBack> res = feedBackMapper.selectFBByUid(uid);
+        return new PageInfo<>(res);
+    }
+
+    @Override
+    public Integer deleteFb(Integer fid) {
+        return feedBackMapper.deleteById(fid);
     }
 }

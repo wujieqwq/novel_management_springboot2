@@ -15,6 +15,7 @@ public class FeedBack {
     private String feedbackContent;
     @JsonFormat(pattern = "yyyy-MM-dd")
     private Date feedbackDate;
+    private Integer uid;
     @TableField(exist = false)
     private User user;
 }

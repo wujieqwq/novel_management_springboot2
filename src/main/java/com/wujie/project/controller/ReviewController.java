@@ -20,9 +20,15 @@ public class ReviewController {
     @Autowired
     private ReviewService reviewService;
 
+    @RequestMapping("/selectBookReviewWithTagByBid")//查询带标签的书评
+    public ResultInfo selectBookReviewWithTagByBid(Integer pageNum,Integer pageSize,Integer bid,String type){
+        PageInfo<BookReview> res = reviewService.selectBookReviewWithTagByBid(pageNum,pageSize,bid,type);
+        return new ResultInfo(200,"查询成功",res);
+    }
+
     @RequestMapping("/selectBookReviewByBid")
-    public ResultInfo selectBookReviewByBid(Integer pageNum,Integer pageSize,Integer bid,String type){
-        PageInfo<BookReview> res = reviewService.selectBookReviewByBid(pageNum,pageSize,bid,type);
+    public ResultInfo selectBookReviewByBid(Integer pageNum,Integer pageSize,Integer bid){
+        PageInfo<BookReview> res = reviewService.selectBookReviewByBid(pageNum,pageSize,bid);
         return new ResultInfo(200,"查询成功",res);
     }
 

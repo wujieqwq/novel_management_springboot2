@@ -8,5 +8,7 @@ import java.util.List;
 
 @Mapper
 public interface FeedBackMapper extends BaseMapper<FeedBack> {
-    List<FeedBack> selectAllfb();
+    List<FeedBack> selectAllfb(String searchText,Integer uid);
+
+    List<FeedBack> selectFBByUid(Integer uid);
 }

@@ -15,8 +15,9 @@ public class ViolationRecord {
     private String reason;
     @JsonFormat(pattern = "yyyy-MM-dd")
     private Date vrDate;
-    private String violationResult;
+    private Integer violationResult;
     private Integer uid;
+    private Integer vuid;
     @TableField(exist = false)
     private User user;
     @TableField(exist = false)

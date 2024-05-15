@@ -22,13 +22,13 @@ public class ReviewServiceImpl implements ReviewService {
 
 
     @Override
-    public PageInfo<BookReview> selectBookReviewByBid(Integer pageNum, Integer pageSize, Integer bid,String type) {
+    public PageInfo<BookReview> selectBookReviewWithTagByBid(Integer pageNum, Integer pageSize, Integer bid,String type) {
         PageHelper.startPage(pageNum,pageSize);
         List<BookReview> res = new ArrayList<>();
         if ("-1".equals(type)){
-            res = bookReviewMapper.selectAllBookReviewByBid(bid);
+            res = bookReviewMapper.selectAllBookReviewWithTagByBid(bid);
         }else{
-            res = bookReviewMapper.selectBookReviewByBid(bid,type);
+            res = bookReviewMapper.selectBookReviewWithTagByBid(bid,type);
         }
         return new PageInfo<>(res);
     }
@@ -56,6 +56,13 @@ public class ReviewServiceImpl implements ReviewService {
     @Override
     public Integer deleteBookReview(Integer brid) {
         return bookReviewMapper.deleteById(brid);
+    }
+
+    @Override
+    public PageInfo<BookReview> selectBookReviewByBid(Integer pageNum, Integer pageSize, Integer bid) {
+        PageHelper.startPage(pageNum,pageSize);
+        List<BookReview> res = bookReviewMapper.selectBookReviewByBid(bid);
+        return new PageInfo<>(res);
     }
 
 }

@@ -14,6 +14,31 @@
     </resultMap>
 
     <select id="selectAllfb" resultMap="fb">
-        select fid,feedback_content,feedback_date,f.uid,uname from feedback f,user u where f.uid = u.uid order by fid desc
+        select
+            fid,
+            feedback_content,
+            feedback_date,
+            u.uid,
+            u.uname
+        from feedback f,user u
+        <where>
+            and f.uid in (select uid from operator_authority where bid in (select bid from book where uid = #{uid}))
+            and f.uid = u.uid
+            <if test="searchText!=null">
+                and feedback_content like concat("%",#{searchText},"%")
+            </if>
+        </where>
+        order by fid desc
+    </select>
+    <select id="selectFBByUid" resultMap="fb">
+        select
+        fid,
+        feedback_content,
+        feedback_date,
+        u.uid,
+        u.uname
+        from feedback f,user u
+        where f.uid = #{uid} and f.uid = u.uid
+        order by fid desc
     </select>
 </mapper>

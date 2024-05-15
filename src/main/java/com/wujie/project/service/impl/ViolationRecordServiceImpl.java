@@ -23,9 +23,7 @@ public class ViolationRecordServiceImpl implements ViolationRecordService {
     }
 
     @Override
-    public int insertVRecord(ViolationRecord vr, Integer uid) {
-        vr.setUid(uid);
-        vr.setVrDate(DateUtil.date());
+    public int insertVRecord(ViolationRecord vr) {
         return violationRecordMapper.insert(vr);
     }
 

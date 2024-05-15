@@ -14,6 +14,6 @@ public interface ChapterMapper extends BaseMapper<Chapter> {
     @Select("select count(cid) from chapter where bid = #{bid}")
     Integer countChapter(Integer bid);
 
-    @Select("select cid,chapter_number from chapter where bid = #{bid}")
+    @Select("select cid,chapter_number from chapter where bid = #{bid} order by chapter_number desc")
     List<Chapter> selectAllChapterNumber(Integer bid);
 }

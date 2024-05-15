@@ -1,5 +1,6 @@
 package com.wujie.project.controller;
 
+import cn.hutool.core.date.DateUtil;
 import com.github.pagehelper.PageInfo;
 import com.wujie.project.pojo.ViolationRecord;
 import com.wujie.project.service.ViolationRecordService;
@@ -23,9 +24,11 @@ public class ViolationRecordController {
         return new ResultInfo(200,"查询成功",res);
     }
     @RequestMapping("/insertVRecord")
-    public ResultInfo insertVRecord(ViolationRecord vr, HttpServletRequest request){
+    public ResultInfo insertVRecord(@RequestBody ViolationRecord vr, HttpServletRequest request){
         Integer uid = (Integer) request.getAttribute("uid");
-        violationRecordService.insertVRecord(vr,uid);
+        vr.setUid(uid);
+        vr.setVrDate(DateUtil.date());
+        violationRecordService.insertVRecord(vr);
         return new ResultInfo(200,"添加成功");
     }
     @RequestMapping(value = "/deleteVRecord")

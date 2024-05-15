@@ -7,7 +7,7 @@ import com.wujie.project.pojo.ChapterReview;
 import java.util.List;
 
 public interface ReviewService {
-    PageInfo<BookReview> selectBookReviewByBid(Integer pageNum, Integer pageSize, Integer bid,String type);
+    PageInfo<BookReview> selectBookReviewWithTagByBid(Integer pageNum, Integer pageSize, Integer bid,String type);
 
     int updateCustomTag(Integer brid, String tagStatus);
 
@@ -17,4 +17,5 @@ public interface ReviewService {
 
     Integer deleteBookReview(Integer brid);
 
+    PageInfo<BookReview> selectBookReviewByBid(Integer pageNum, Integer pageSize, Integer bid);
 }
